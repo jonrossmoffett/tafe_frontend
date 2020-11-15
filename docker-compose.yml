@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  my-app:
+    container_name: Vue-App
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8081:8080'
+    networks: 
+      - docker-wrapper_app-shared
+      - pwanetwork
+
+networks:
+  pwanetwork:
+  docker-wrapper_app-shared:
+    external: true  
