@@ -16,10 +16,10 @@
     <div class="flex justify-center items-center h-screen w-screen">
       <div class="w-5/6 bg-secondary shadow-lg rounded p-4 justify-items-center" :class="GetTheme">
         <form class="flex flex-col" @submit.prevent="checkEnquiry">
-          <label class="text-center flex flex-col pb-2 ">Title</label>
-          <input v-model="Title" class="w-100 mx-auto w-full h-10 px-2 bg-primary" :class="GetTheme">
-          <label class="text-center flex flex-col pb-2 pt-2 ">Description</label>
-          <textarea v-model="Description" class="mx-auto w-full h-20 bg-primary px-2 hover:bg-gray-300 hover:border-gray-300 border-gray-200 " :class="GetTheme"></textarea>
+          <label class="text-center flex flex-col pb-2 text-default" :class="GetTheme">Title</label>
+          <input v-model="Title" class="w-100 mx-auto w-full h-10 px-2 bg-primary text-default" :class="GetTheme">
+          <label class="text-center flex flex-col pb-2 pt-2 text-default" :class="GetTheme">Description</label>
+          <textarea v-model="Description" class="mx-auto w-full h-20 bg-primary px-2 hover:bg-gray-300 hover:border-gray-300 border-gray-200 text-default" :class="GetTheme"></textarea>
               <div v-for="(errorObject,k) in errors" :key="k">
                   <div v-for="(ErrorMessage,k1) in errorObject" :key="k1" class="py-2 my-2 bg-btnDelete rounded-lg font-bold px-2">
                       <transition name="bounce">
