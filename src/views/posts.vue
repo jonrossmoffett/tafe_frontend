@@ -12,7 +12,7 @@
       </div>
 
 <transition name="fade">
-  <div v-if="Toggle" class="absolute top-0 left-0 bg-smoke">
+  <div v-if="Toggle" class="absolute top-0 left-0 bg-smoke" style="z-index:1;">
     <div class="flex justify-center items-center h-screen w-screen">
       <div class="w-5/6 bg-secondary shadow-lg rounded p-4 justify-items-center" :class="GetTheme">
         <form class="flex flex-col" @submit.prevent="checkEnquiry">
@@ -343,7 +343,7 @@ export default {
       this.loading = false;
     })
   this.PopulateOfflinePosts();
-  },800);
+  },100);
 
   //end of created
   },

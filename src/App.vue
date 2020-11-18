@@ -4,7 +4,7 @@
 
 <div class="bg-tertiary w-screen min-h-screen flex flex-col" :class="GetTheme">
   
-  <div id="nav" class="bg-secondary w-screen flex flex-row flex-wrap py-2" :class="GetTheme">
+  <div id="nav" class="bg-secondary w-screen flex " :class="GetTheme">
 
     <div class="p-3 flex-auto text-center text-default" :class="GetTheme">
           <router-link to="/">Home</router-link> 
@@ -21,9 +21,16 @@
     <div v-if="loggedIn" class="p-3 flex-auto text-center text-default" :class="GetTheme">
     <router-link to="/posts"><h1>posts</h1></router-link>
     </div>
+    
 
     <div v-if="loggedIn" class="p-3 flex-auto text-center text-default" :class="GetTheme">
-            <router-link to="/settings"><h1>settings</h1></router-link>
+            <router-link to="/settings" class="w-12">
+            
+              
+                <h1>Settings</h1>
+           
+            
+            </router-link>
     </div>
 
   </div>
@@ -70,8 +77,8 @@
 import axios from "axios"
 import { computed } from 'vue';
 import {authComputed} from './vuex/helpers.js'
-import Vlf from 'vlf'
-import localforage from 'localforage'
+//import Vlf from 'vlf'
+//import localforage from 'localforage'
 import Localbase from 'localbase'
 
 export default {

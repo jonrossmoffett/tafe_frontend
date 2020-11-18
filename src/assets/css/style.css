@@ -30,7 +30,24 @@
     --text-default-color: #fff;
 }
 
-.editIcon{
-    -webkit-clip-path: inset(100px,50px);
-    clip-path: inset(100px,50px);
+.editIconDark{
+    -webkit-clip-path: inset(50% 25% 0% 0% );
+    clip-path: inset(50% 50% 0% 0%);
+    filter: invert(97%) sepia(41%) saturate(307%) hue-rotate(175deg) brightness(111%) contrast(100%);
+}
+.editIconLight{
+    -webkit-clip-path: inset(50% 25% 0% 0% );
+    clip-path: inset(50% 50% 0% 0%);
+    filter: invert(0%) sepia(7%) saturate(7473%) hue-rotate(305deg) brightness(92%) contrast(108%);
+}
+
+.settingsIconDark{
+    -webkit-clip-path: inset(0% 0% 50% 25% );
+    clip-path: inset(50% 50% 0% 0%);
+    filter: invert(97%) sepia(41%) saturate(307%) hue-rotate(175deg) brightness(111%) contrast(100%);
+}
+.settingsIconLight{
+    -webkit-clip-path: inset(0% 0% 50% 25% );
+    clip-path: inset(50% 50% 0% 0%);
+    filter: invert(0%) sepia(7%) saturate(7473%) hue-rotate(305deg) brightness(92%) contrast(108%);
 }

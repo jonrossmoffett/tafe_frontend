@@ -2,17 +2,22 @@
   <div class="h-20 mt-2 w-screen grid grid-cols-12  px-2">
 
   
-    <div class="bg-red-500 h-full col-span-5">
+    <div class="h-full col-span-5">
       <div class="bg-secondary h-full flex" :class="GetTheme">
         <h1 class="text-default pl-4 my-auto flex" :class="GetTheme" >{{trim(Title)}}</h1>
       </div>
     </div>
 
-    <div class="bg-secondary 0 h-full col-span-3 " :class="GetTheme"> 
-        <button class="text-default w-full h-full" :class="GetTheme" @click="this.Toggle = true" >
-          <img :src="images.sample" class="w-12 mx-auto editIcon">
-        </button>
-        
+    <div class=" h-full col-span-3 " :class="GetTheme" v-if="GetTheme == 'theme-light'"> 
+      <div class="h-full flex bg-secondary" :class="GetTheme" @click="this.Toggle = true">
+        <img :src="images.edit" class="w-12 h-12 editIconLight mx-auto " @click="this.Toggle = true" >
+      </div>
+    </div>
+
+    <div class=" h-full col-span-3 " :class="GetTheme" v-if="GetTheme == 'theme-dark'"> 
+      <div class="h-full flex bg-secondary" :class="GetTheme" @click="this.Toggle = true">
+        <img :src="images.edit" class="w-12 h-12 editIconDark mx-auto " @click="this.Toggle = true" >
+      </div>
     </div>
 
     <div class="bg-secondary h-full col-span-4  flex items-center" :class="GetTheme"> 
@@ -26,7 +31,7 @@
   </div>
 
 <transition name="fade">
-    <div v-if="Toggle" class="absolute top-0 left-0 bg-smoke">
+    <div v-if="Toggle" class="absolute top-0 left-0 bg-smoke" style="z-index: 1">
     <div class="flex justify-center items-center h-screen w-screen ">
       <div class="w-5/6 bg-secondary shadow-lg rounded p-4 justify-items-center"  :class="GetTheme">
         <form class="flex flex-col bg-secondary" @submit.prevent="checkEdit"  :class="GetTheme">
@@ -89,7 +94,7 @@ export default {
       errors : [],
       successMsg : '',
       images: {
-        sample: require('../assets/icons/icons.svg')
+        edit: require('../assets/icons/icons.svg')
       }
     }
   },
