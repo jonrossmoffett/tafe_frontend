@@ -1,6 +1,7 @@
 <template>
 
 
+
 <div class="bg-tertiary w-screen min-h-screen flex flex-col" :class="GetTheme">
   
   <div id="nav" class="bg-secondary w-screen flex flex-row flex-wrap py-2" :class="GetTheme">
@@ -97,7 +98,7 @@ export default {
       this.$store.commit('SET_USER_DATA',userData)
     }
 
-/*     axios.interceptors.response.use(
+    axios.interceptors.response.use(
       response => response,
       error => {
         if(error.response.status === 401){
@@ -105,7 +106,7 @@ export default {
         }
         return Promise.reject(error)
       }
-    ) */
+    )
 
     let installPrompt;
     window.addEventListener("beforeinstallprompt", e => {

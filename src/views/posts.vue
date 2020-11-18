@@ -1,6 +1,6 @@
 <template>
 
-  <div>
+  <div class="h-screen">
 
       <div class="h-20  w-screen  flex justify-items-center">
       <button  @click="this.Toggle = true" class=" w-full flex mx-auto mt-2  mr-2 ml-2 rounded-lg">
@@ -42,6 +42,22 @@
   </div>
 </transition>
 
+  
+
+    <half-circle-spinner
+    v-if="loading && GetTheme == 'theme-light'"
+    class="flex mt-48 mx-auto"
+    :animation-duration="1000"
+    :size="60"
+    :color="'#648ddf'"/>
+
+    <half-circle-spinner
+    v-if="loading && GetTheme == 'theme-dark'"
+    class="flex mt-48 mx-auto"
+    :animation-duration="1000"
+    :size="60"
+    :color="'#FFFFFF'"/>
+  
 
     <ul id="array-rendering" class="bg-primary" :class="GetTheme">
       <li v-for="post in posts" :key="post.status">
@@ -64,17 +80,20 @@
 
 import Enquiry from '@/components/Enquiry.vue'
 import axios from "axios"
-import { openDB, deleteDB, wrap, unwrap } from 'idb';
-import Vlf from 'vlf'
-import localforage from 'localforage'
+//import { openDB, deleteDB, wrap, unwrap } from 'idb';
+//import Vlf from 'vlf'
+//import localforage from 'localforage'
 import Localbase from 'localbase'
+import {HalfCircleSpinner} from 'epic-spinners'
+
 let db = new Localbase('db')
 
 export default {
 
   name: 'posts',
   components: {
-  Enquiry
+  Enquiry,
+  HalfCircleSpinner
   },
 
   data(){
@@ -85,7 +104,8 @@ export default {
       Description: '',
       errors : [],
       successMsg : '',
-      offlinePosts : []
+      offlinePosts : [],
+      loading : true
     }
   },
 
@@ -102,27 +122,31 @@ export default {
       alert(this.offlinePosts)
   },
 
-  checkEnquiry(){
+  checkEnquiry(e){
 
-  this.errors = [];
+    this.errors = []
 
-    if (this.Title < 5) {
+    if (this.Title.length < 5) {
         this.errors.push(['Title needs to be atleast 5 characters long']);
     }
-    if (this.Title > 20) {
+    if (this.Title.length > 20) {
         this.errors.push(['Title needs to be atleast 5 characters long']);
     }
 
-    else if (this.Description < 20) {
+    else if (this.Description.length < 20) {
         this.errors.push(['Description needs to be atleast 20 characters long']);
     }
-    else if (this.Description > 199) {
+    else if (this.Description.length > 199) {
         this.errors.push(['Description needs to be less than 200 characters long']);
     }
 
     if (!this.errors.length) {
         this.createEnquiry();
+        return true
     }
+   
+
+    e.preventDefault();
 
   },
 
@@ -134,9 +158,9 @@ export default {
         this.notifySuccess();
         this.getPosts();
     }).catch(error => {
+
       if(!navigator.onLine){
         this.errors.push(['Enquiry will be added when you come back online']);
-
         db.collection('failed-posts').add({
             Title: this.Title,
             Description: this.Description,
@@ -276,9 +300,7 @@ export default {
    processOfflineDelete(){
     db.collection('delete').orderBy('id', 'desc').get({ keys: true }).then(failedDelete => {
       failedDelete.forEach(element => {
-        axios.post('https://phpwebservice.herokuapp.com/api/deletePost.php',{
-          postId: element.data.id
-        }).then(response => {
+        axios.delete(`https://phpwebservice.herokuapp.com/api/deletePost.php?postId=${element.data.id}`,{}).then(response => {
           console.log(response)
           element.data.sent = true
           db.collection('delete').doc(element.key).delete()
@@ -318,6 +340,7 @@ export default {
           this.posts.splice(objIndex,1);
         })
       })
+      this.loading = false;
     })
   this.PopulateOfflinePosts();
   },800);

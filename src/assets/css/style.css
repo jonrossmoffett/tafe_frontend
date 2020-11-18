@@ -7,7 +7,7 @@
 
 .theme-light {
     --primary-background-color: #f2f5f8 ;
-    --secondary-background-color: #9aa8c5;
+    --secondary-background-color: #648ddf;
     --tertiary-background-color: rgb(255, 255, 255);
     --color1-background-color : rgb(197, 194, 194);
 
@@ -28,4 +28,9 @@
     --btnClose-background-color: rgb(61, 89, 216);
 
     --text-default-color: #fff;
+}
+
+.editIcon{
+    -webkit-clip-path: inset(100px,50px);
+    clip-path: inset(100px,50px);
 }

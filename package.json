@@ -9,6 +9,7 @@
   "dependencies": {
     "axios": "^0.20.0",
     "core-js": "^3.6.5",
+    "epic-spinners": "^1.1.0",
     "eslint-import-resolver-webpack": "^0.13.0",
     "firebase": "^7.23.0",
     "idb": "^5.0.7",
@@ -19,6 +20,7 @@
     "tailwindcss": "^1.9.1",
     "vlf": "^1.1.0",
     "vue": "^3.0.0",
+    "vue-content-loader": "^0.2.3",
     "vue-offline": "^2.0.8",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-beta.4",

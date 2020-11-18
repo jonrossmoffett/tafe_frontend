@@ -10,8 +10,9 @@
 
     <div class="bg-secondary 0 h-full col-span-3 " :class="GetTheme"> 
         <button class="text-default w-full h-full" :class="GetTheme" @click="this.Toggle = true" >
-          Edit
+          <img :src="images.sample" class="w-12 mx-auto editIcon">
         </button>
+        
     </div>
 
     <div class="bg-secondary h-full col-span-4  flex items-center" :class="GetTheme"> 
@@ -86,7 +87,10 @@ export default {
     return{
       Toggle: false,
       errors : [],
-      successMsg : ''
+      successMsg : '',
+      images: {
+        sample: require('../assets/icons/icons.svg')
+      }
     }
   },
   computed: {
@@ -123,9 +127,7 @@ export default {
     },
 
     submitDelete(){
-      axios.post('https://phpwebservice.herokuapp.com/api/deletePost.php',{
-        postId: this.id
-      }).then(response => {
+      axios.delete(`https://phpwebservice.herokuapp.com/api/deletePost.php?postId=${this.id}`,{ }).then(response => {
         this.$router.go(this.$router.currentRoute);
       }).catch(error => {
         console.log(error)
