@@ -199,11 +199,12 @@ export default {
 <style src="./assets/css/style.css"></style>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap' );
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap' ); */
 
 
 body{
-  font-family: 'Poppins', sans-serif;
+  /* font-family: 'Poppins', sans-serif; */
+  font-family: 'Roboto';
 }
 
 </style>

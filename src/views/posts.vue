@@ -80,13 +80,10 @@
 
 import Enquiry from '@/components/Enquiry.vue'
 import axios from "axios"
-//import { openDB, deleteDB, wrap, unwrap } from 'idb';
-//import Vlf from 'vlf'
-//import localforage from 'localforage'
 import Localbase from 'localbase'
 import {HalfCircleSpinner} from 'epic-spinners'
-
 let db = new Localbase('db')
+db.config.debug = false
 
 export default {
 
@@ -236,8 +233,10 @@ export default {
   ToggleModal(){
     if(this.Toggle == true){
       this.Toggle = false
+      this.errors = []
     }else{
       this.Toggle = true
+      this.errors = []
     }
     this.Title = '',
     this.Description = ''
@@ -252,7 +251,7 @@ export default {
         Description: element.data.Description,
         Status: element.data.Status,
       }
-      console.log("posts to be added :", newPost) 
+      //console.log("posts to be added :", newPost) 
       this.offlinePosts.push(newPost)
       })
     })
@@ -266,10 +265,10 @@ export default {
         description: element.data.Description,
         status: element.data.Status
         }).then(response => {
-          console.log(response)
+          //console.log(response)
           element.data.sent = true
         }).catch( err => {
-          console.log(err)
+          //console.log(err)
         })
 
         if(element.data.sent = true){

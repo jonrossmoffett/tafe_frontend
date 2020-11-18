@@ -52,7 +52,7 @@
             {{successMsg}}
           </div>
           <div class="flex justify-evenly my-5 ">
-            <button type="button" class="p-3 bg-btnClose flex hover:bg-gray-700 font-bold" @click="this.Toggle = false"> close </button>
+            <button type="button" class="p-3 bg-btnClose flex hover:bg-gray-700 font-bold" @click="this.Toggle = false ; this.errors = []"> close </button>
             <button type="button" class="p-3 bg-btnDelete flex hover:bg-gray-700 font-bold" @click="submitDelete"> Delete </button>
             <button type="submit" v-if="!Status" name="button" class="bg-btnSubmit hover:bg-gray-700 font-bold p-3">Submit</button>
           </div>
@@ -69,12 +69,9 @@
 
 <script>
 import axios from "axios"
-import { openDB, deleteDB, wrap, unwrap } from 'idb';
-import Vlf from 'vlf'
-import localforage from 'localforage'
 import Localbase from 'localbase'
 let db = new Localbase('db')
-
+db.config.debug = false
 
 export default {
   name: 'Enquiry',

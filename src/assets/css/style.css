@@ -5,6 +5,11 @@
 @tailwind utilities;
 
 
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Regular.ttf') format('truetype') ;
+}
+
 .theme-light {
     --primary-background-color: #f2f5f8 ;
     --secondary-background-color: #648ddf;
