@@ -175,7 +175,10 @@ export default {
         
         setTimeout(() => {
         this.ToggleModal();
+        this.$router.go()
         }, 2000);
+
+        
     }
     else{
       this.errors = error.response.data;
@@ -343,7 +346,7 @@ export default {
       this.loading = false;
     })
   this.PopulateOfflinePosts();
-  },100);
+  },800);
 
   //end of created
   },

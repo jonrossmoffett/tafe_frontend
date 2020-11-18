@@ -6,7 +6,8 @@ import router from './router'
 import Vlf from 'vlf'
 import localforage from 'localforage'
 import Localbase from 'localbase'
+import VueOffline from 'vue-offline'
 
-createApp(App).use(router,localforage,Vlf,Localbase).use(store).mount('#app',store);
+createApp(App).use(router,Localbase,VueOffline).use(store).mount('#app',store);
 
 //use(store).use(Vlf).use(localforage)

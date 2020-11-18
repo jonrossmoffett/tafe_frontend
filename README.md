@@ -1,11 +1,4 @@
-App mostly finished. 
-<br>
-writing documentation and fixing last minute bugs.
-<br>
-also need to re add the feature which logs the user out when their JWT is expired.
-<br>
-if visitng this link later, make sure the application cahce and storage is cleared as workbox is being used and you may not get the latest version
-<br>
+App is currently finished
 
 <br>
 deployment link: 

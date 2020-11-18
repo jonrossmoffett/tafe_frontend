@@ -6,13 +6,14 @@ workbox.setConfig({
 
 workbox.core.setCacheNameDetails({prefix: "vuepwa"});
 
-
-
-
 self.addEventListener('message', (event) => {
  if (event.data && event.data.type === 'SKIP_WAITING') {
    self.skipWaiting();
  }
+});
+
+self.addEventListener('install', event => {
+  self.skipWaiting();
 });
 
 if (workbox) {
@@ -94,5 +95,5 @@ if (workbox) {
 
 
 } else {
-  console.log(`Boo! Workbox didn't load 😬`);
+  console.log(`workbox failed to load`);
 }

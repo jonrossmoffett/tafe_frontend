@@ -158,11 +158,12 @@ export default {
 
               setTimeout(() => {
                 this.ToggleModal();
+                this.$router.go(this.$router.currentRoute);
               }, 2000);
               
              }
 
-            this.$router.go(this.$router.currentRoute);
+            
         }
        
        
@@ -175,17 +176,17 @@ export default {
   checkEdit(){
     this.errors = [];
 
-    if (this.Title < 5) {
+    if (this.Title.length < 5) {
         this.errors.push(['Title needs to be atleast 5 characters long']);
     }
-    if (this.Title > 20) {
+    if (this.Title.length > 20) {
         this.errors.push(['Title needs to be atleast 5 characters long']);
     }
 
-    else if (this.Description < 20) {
+    else if (this.Description.length < 20) {
         this.errors.push(['Description needs to be atleast 20 characters long']);
     }
-    else if (this.Description > 199) {
+    else if (this.Description.length > 199) {
         this.errors.push(['Description needs to be less than 200 characters long']);
     }
 
@@ -241,9 +242,10 @@ export default {
         
         setTimeout(() => {
         this.ToggleModal();
+        this.$router.go(this.$router.currentRoute);
         }, 2000);
 
-        this.$router.go(this.$router.currentRoute);
+        
 
       }else{
         this.errors = error.response.data; //user is online but has a validation error
